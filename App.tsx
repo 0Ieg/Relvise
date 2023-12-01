@@ -1,16 +1,20 @@
 // import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { Header } from './src/header/header';
-import { Footer } from './src/footer/footer';
-import { Main } from './src/main/main';
+import { Provider } from 'react-redux';
+import { Header } from './src/UI/header/header';
+import { Footer } from './src/UI/footer/footer';
+import { Main } from './src/UI/main/main';
+import { store } from './src/BLL/store';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Header/>
-      <Main/>
-      <Footer/>
-    </View>
+    <Provider store={store}>
+      <View style={styles.container}>
+        <Header />
+        <Main />
+        <Footer />
+      </View>
+    </Provider>
   );
 }
 
