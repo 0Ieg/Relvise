@@ -1,21 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+export type TodoType = {todo_id:string, todo_title:string, todo_completed:boolean}
+const initialState =  [] as TodoType[]
 
-const initialState =  [{id:'1',title:'A'},{id:'2',title:'B'}]
 
 const todoSlice = createSlice({
   name:'todo',
   initialState: initialState,
   reducers:{
-    addTodo:(state, action)=>{
-      const date = new Date().toISOString()
-      console.log(date)
-      state.push({id:date, title:action.payload})
+    getTodos:(state, action)=>{
+      state = action.payload
     },
-    deleteTodo:(state, action)=>{
-      console.log(action.payload)
-      return state.filter((todo)=>todo.id!==action.payload)
-    },
+    // addTodo:(state, action)=>{
+    //   const date = new Date().toISOString()
+    //   console.log(date)
+    //   state.push({id:date, title:action.payload})
+    // },
+    // deleteTodo:(state, action)=>{
+    //   console.log(action.payload)
+    //   return state.filter((todo)=>todo.id!==action.payload)
+    // },
     // clearTodoList:(state)=>{
     //   return state=[]
     // }

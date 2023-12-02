@@ -7,13 +7,13 @@ import { getAllTodosAsyncAC } from '../../BLL/saga'
 
 export const TodoList:FC = ()=>{
   const allTodos = useSelector((state:StateType)=>state)
-  const list = allTodos.map(todo=><TodoItem {...todo} key={todo.id}/>)
   const dispatch = useDispatch()
+  console.log(allTodos);
   useEffect(()=>{
     dispatch(getAllTodosAsyncAC())
   },[])
   return(
-    <FlatList data={allTodos} renderItem={({item, index, separators})=><TodoItem {...item} key={item.id}/>}/>
+    <FlatList data={allTodos} renderItem={({item, index, separators})=><TodoItem {...item}/>} keyExtractor={item => item.todo_id}/>
   )
 }
 

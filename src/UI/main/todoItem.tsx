@@ -1,17 +1,16 @@
 import { FC } from 'react'
 import { View, Text, Button, StyleSheet } from 'react-native'
 import { useDispatch } from 'react-redux'
-import { actions } from '../../BLL/todo.slice'
+import { TodoType, actions } from '../../BLL/todo.slice'
 
-export const TodoItem:FC<{id:string, title: string}> = ({id, title})=>{
+export const TodoItem:FC<TodoType> = (props)=>{
+  const {todo_id, todo_title, todo_completed} = props
   const dispatch = useDispatch()
-  const pressHandler = ()=>{
-    dispatch(actions.deleteTodo(id))
-  }
+  console.log('todoItem');
   return(
     <View style={styles.todoitem}>
-      <Text style={styles.title}>{title}</Text>
-      <Button title='Delete' onPress={pressHandler}/>
+      <Text style={styles.title}>{todo_title}</Text>
+      <Button title='Delete'/>
     </View>
   )
 }
