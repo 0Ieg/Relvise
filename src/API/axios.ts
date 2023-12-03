@@ -8,3 +8,17 @@ export const getAllTodosAPI = ()=>{
     .then((response)=>response.data)
   )
 }
+
+export const deleteTodoAPI = (todo_id:string)=>{
+  return(
+    myAxios.delete(`/${todo_id}`)
+    .then(response=>response.data)
+  )
+}
+
+export const addTodoAPI = (todo_title:string)=>{
+  return(
+    myAxios.post('', {todo_title})
+    .then(response=>response.data)
+  )
+}

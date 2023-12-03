@@ -9,7 +9,7 @@ const todoSlice = createSlice({
   initialState: initialState,
   reducers:{
     getTodos:(state, action)=>{
-      state = action.payload
+      return state = action.payload
     },
     // addTodo:(state, action)=>{
     //   const date = new Date().toISOString()
@@ -17,7 +17,6 @@ const todoSlice = createSlice({
     //   state.push({id:date, title:action.payload})
     // },
     // deleteTodo:(state, action)=>{
-    //   console.log(action.payload)
     //   return state.filter((todo)=>todo.id!==action.payload)
     // },
     // clearTodoList:(state)=>{
@@ -25,5 +24,5 @@ const todoSlice = createSlice({
     // }
   }
 })
-export const actions = todoSlice.actions
+export const { getTodos } = todoSlice.actions
 export const todoReducer = todoSlice.reducer

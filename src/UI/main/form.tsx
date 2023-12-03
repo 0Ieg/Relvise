@@ -1,23 +1,23 @@
 import { FC, useState } from "react";
 import { StyleSheet, View, TextInput, Button, Alert } from "react-native";
 import { useDispatch } from 'react-redux'
-import { actions } from "../../BLL/todo.slice";
+// import { actions } from "../../BLL/todo.slice";
 
 export const Form:FC = ()=>{
   const dispatch = useDispatch()
-  const [value, setValue] = useState<string>()
-  const pressHandler = ()=>{
-    if (value?.trim()){
-      dispatch(actions.addTodo(value))
-      setValue('')
-    }else{
-      Alert.alert('Введи уже хоть что-нибудь!')
-    }
-  }
+  const [value, setValue] = useState<string>('')
+  // const pressHandler = ()=>{
+  //   if (value?.trim()){
+  //     dispatch(actions.addTodo(value))
+  //     setValue('')
+  //   }else{
+  //     Alert.alert('Введи уже хоть что-нибудь!')
+  //   }
+  // }
   return(
     <View style={styles.form}>
       <TextInput style={styles.input} onChangeText={setValue} placeholder="Введи название дела..." value={value} autoCorrect={false} autoCapitalize="sentences"/>
-      <Button title="Add" onPress={pressHandler}/>
+      <Button title="Add" />
     </View>
   )
 }

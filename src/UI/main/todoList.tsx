@@ -8,7 +8,6 @@ import { getAllTodosAsyncAC } from '../../BLL/saga'
 export const TodoList:FC = ()=>{
   const allTodos = useSelector((state:StateType)=>state)
   const dispatch = useDispatch()
-  console.log(allTodos);
   useEffect(()=>{
     dispatch(getAllTodosAsyncAC())
   },[])
@@ -22,3 +21,4 @@ const styles = StyleSheet.create({
     gap: 10
   }
 })
+
