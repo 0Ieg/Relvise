@@ -12,7 +12,7 @@ export const Header:FC = ()=>{
 
 const styles = StyleSheet.create({
   header:{
-    flex: 0.1,
+    height: 50,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#D8E2EB',

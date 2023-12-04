@@ -24,7 +24,7 @@ export const Form:FC = ()=>{
 
 const styles = StyleSheet.create({
   form:{
-    height: '10%',
+    height: 50,
     flexDirection: 'row',
     justifyContent: "space-between",
   },

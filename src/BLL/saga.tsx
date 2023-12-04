@@ -5,7 +5,7 @@ import { getTodos } from "./todo.slice";
 export const getAllTodosAsyncAC = createAction('GET_ALL_TODOS_ASYNC')
 export const deleteTodoAsyncAC = createAction<string|undefined>('DELETE_TODO_ASYNC')
 
-export function* Watcher(action:any){
+export function* Watcher(){
   yield takeEvery(getAllTodosAsyncAC().type, GetAllTodosWorker)
   yield takeEvery(deleteTodoAsyncAC().type, DeleteTodoWorker)
 }
@@ -13,7 +13,6 @@ export function* Watcher(action:any){
 function* GetAllTodosWorker():Generator{
   const allTodos = yield call(getAllTodosAPI)
   yield put(getTodos(allTodos))
-  console.log('GetAllTodos_Worker')
 }
 
 function* DeleteTodoWorker(action:ReturnType<typeof deleteTodoAsyncAC>):Generator{

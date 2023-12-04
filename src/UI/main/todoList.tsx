@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react'
-import { View, ScrollView, StyleSheet, FlatList } from 'react-native'
+import { StyleSheet, FlatList } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { StateType } from '../../BLL/store'
 import { TodoItem } from './todoItem'
@@ -12,7 +12,11 @@ export const TodoList:FC = ()=>{
     dispatch(getAllTodosAsyncAC())
   },[])
   return(
-    <FlatList data={allTodos} renderItem={({item, index, separators})=><TodoItem {...item}/>} keyExtractor={item => item.todo_id}/>
+    <FlatList 
+    data={allTodos} 
+    renderItem={({item, index, separators})=><TodoItem {...item}/>} 
+    keyExtractor={item => item.todo_id}
+    />
   )
 }
 
