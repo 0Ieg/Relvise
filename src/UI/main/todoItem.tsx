@@ -1,8 +1,8 @@
 import { FC, useState } from 'react'
-import { View, Text, Button, StyleSheet, Pressable } from 'react-native'
+import { View, Text, StyleSheet, Pressable } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { TodoType } from '../../BLL/todo.slice'
-import { deleteTodoAsyncAC } from '../../BLL/saga'
+import { deleteTodoAsyncAC, completeTodoAsyncAC } from '../../BLL/saga'
 import { CompletedIcon, NotCompletedIcon } from '../../BLL/icons/todo.icons'
 
 export const TodoItem:FC<TodoType> = (props)=>{
@@ -12,18 +12,17 @@ export const TodoItem:FC<TodoType> = (props)=>{
     dispatch(deleteTodoAsyncAC(todo_id))
   }
   const completeHandler = ()=>{
-    
+    dispatch(completeTodoAsyncAC(todo_id))
   }
 
   const [pressed, setPressed] = useState(false)
   const pressInHandler = ()=>{setPressed((value)=>!value)}
   const pressOutHandler = ()=>{setPressed((value)=>!value)}
 
-  const css = StyleSheet.create({
+  const styles = StyleSheet.create({
     todoitem:{
-      height: '100%',
+      height: 30,
       flexDirection:'row',
-      justifyContent: 'space-between',
       alignItems: 'center',
       borderWidth: 2,
       borderRadius: 5,
@@ -34,14 +33,15 @@ export const TodoItem:FC<TodoType> = (props)=>{
       height:'100%',
       alignItems: 'center',
       justifyContent: 'center',
-      borderRightWidth: 2,
     },
     title:{
-      width: '65%',
+      width: '70%',
       paddingHorizontal: 10,
+      borderLeftWidth: 2,
     },
     delete:{
       width: '20%',
+      height: '100%',
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: pressed?'#bb00cc63':'#b0c4',
@@ -49,12 +49,12 @@ export const TodoItem:FC<TodoType> = (props)=>{
     }
   })
   return(
-    <View style={css.todoitem}>
-      <Pressable style={css.complete}>
+    <View style={styles.todoitem}>
+      <Pressable style={styles.complete} onPress={completeHandler}>
         {todo_completed?<CompletedIcon/>:<NotCompletedIcon/>}
       </Pressable>
-      <Text style={css.title}>{todo_title}</Text>
-      <Pressable style={css.delete} onPress={deleteHandler} onPressIn={pressInHandler} onPressOut={pressOutHandler}>
+      <Text style={styles.title}>{todo_title}</Text>
+      <Pressable style={styles.delete} onPress={deleteHandler} onPressIn={pressInHandler} onPressOut={pressOutHandler}>
         <Text>Delete</Text>
       </Pressable>
     </View>

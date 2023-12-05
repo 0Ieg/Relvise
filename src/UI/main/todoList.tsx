@@ -13,6 +13,7 @@ export const TodoList:FC = ()=>{
   },[])
   return(
     <FlatList 
+    style={css.todoList}
     data={allTodos} 
     renderItem={({item, index, separators})=><TodoItem {...item}/>} 
     keyExtractor={item => item.todo_id}
@@ -20,8 +21,8 @@ export const TodoList:FC = ()=>{
   )
 }
 
-const styles = StyleSheet.create({
-  todolist:{
+const css = StyleSheet.create({
+  todoList:{
     gap: 10
   }
 })
