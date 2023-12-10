@@ -1,26 +1,17 @@
-// import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar, StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
-import { Header } from './src/UI/header/header';
-import { Footer } from './src/UI/footer/footer';
-import { Main } from './src/UI/main/main';
 import { store } from './src/BLL/store';
+import { NavigationContainer } from '@react-navigation/native';
+import { BottomTab } from './src/UI/bottom-tab-navigator';
 
 export default function App() {
   return (
     <Provider store={store}>
-      <View style={styles.container}>
-        <Header />
-        <Main />
-        <Footer />
-      </View>
+      <NavigationContainer>
+        <StatusBar barStyle={'dark-content'}/>
+        <BottomTab/>
+      </NavigationContainer>
     </Provider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-  }
-});

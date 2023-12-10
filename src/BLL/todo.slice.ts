@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-export type TodoType = {todo_id:string, todo_title:string, todo_completed:boolean}
+export type TodoType = {id:string, title:string, completed:boolean, created: Date, updated:Date}
 const initialState =  [] as TodoType[]
 
 

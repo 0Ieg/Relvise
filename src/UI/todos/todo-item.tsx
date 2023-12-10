@@ -6,13 +6,13 @@ import { deleteTodoAsyncAC, completeTodoAsyncAC } from '../../BLL/saga'
 import { CompletedIcon, NotCompletedIcon } from '../../BLL/icons/todo.icons'
 
 export const TodoItem:FC<TodoType> = (props)=>{
-  const {todo_id, todo_title, todo_completed} = props
+  const {id, title, completed} = props
   const dispatch = useDispatch()
   const deleteHandler = ()=>{
-    dispatch(deleteTodoAsyncAC(todo_id))
+    dispatch(deleteTodoAsyncAC(id))
   }
   const completeHandler = ()=>{
-    dispatch(completeTodoAsyncAC(todo_id))
+    dispatch(completeTodoAsyncAC({id, title}))
   }
 
   const [pressed, setPressed] = useState(false)
@@ -26,7 +26,7 @@ export const TodoItem:FC<TodoType> = (props)=>{
       alignItems: 'center',
       borderWidth: 2,
       borderRadius: 5,
-      backgroundColor: todo_completed?'#b0c4b1':'#d8e2eb',
+      backgroundColor: completed?'#b0c4b1':'#d8e2eb',
     },
     complete:{
       width: '10%',
@@ -51,9 +51,9 @@ export const TodoItem:FC<TodoType> = (props)=>{
   return(
     <View style={styles.todoitem}>
       <Pressable style={styles.complete} onPress={completeHandler}>
-        {todo_completed?<CompletedIcon/>:<NotCompletedIcon/>}
+        {completed?<CompletedIcon/>:<NotCompletedIcon/>}
       </Pressable>
-      <Text style={styles.title}>{todo_title}</Text>
+      <Text style={styles.title}>{title}</Text>
       <Pressable style={styles.delete} onPress={deleteHandler} onPressIn={pressInHandler} onPressOut={pressOutHandler}>
         <Text>Delete</Text>
       </Pressable>
