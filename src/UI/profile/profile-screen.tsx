@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import { TextInput, Text, View, StyleSheet, Pressable } from 'react-native'
 import { useDispatch } from 'react-redux'
-import { loginAsyncAC } from '../../BLL/saga'
+import { loginAsyncAC } from '../../BLL/store/auth/auth.saga' 
 import { Margins, Borrad } from '../../BLL/global-styles'
 
 export const ProfileScreen:FC = ()=>{

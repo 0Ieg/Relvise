@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { StyleSheet, View, Text, TextInput, Pressable, Alert} from "react-native";
 import { useDispatch } from 'react-redux'
-import { addTodoAsyncAC } from "../../BLL/saga";
+import { addTodoAsyncAC } from "../../BLL/store/todo/todo.saga";
 
 
 export const Form:FC = ()=>{

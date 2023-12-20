@@ -1,9 +1,9 @@
 import { FC, useState } from 'react'
 import { View, Text, StyleSheet, Pressable } from 'react-native'
 import { useDispatch } from 'react-redux'
-import { TodoType } from '../../BLL/todo.slice'
-import { deleteTodoAsyncAC, completeTodoAsyncAC } from '../../BLL/saga'
+import { TodoType } from '../../BLL/store/todo/todo.slice'
 import { CompletedIcon, NotCompletedIcon } from '../../BLL/icons/todo.icons'
+import { completeTodoAsyncAC, deleteTodoAsyncAC } from '../../BLL/store/todo/todo.saga'
 
 export const TodoItem:FC<TodoType> = (props)=>{
   const {id, title, completed} = props

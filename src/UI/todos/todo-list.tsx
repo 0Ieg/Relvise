@@ -1,9 +1,9 @@
 import { FC, useEffect } from 'react'
 import { StyleSheet, FlatList } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { StateType } from '../../BLL/store'
+import { StateType } from '../../BLL/store/store'
 import { TodoItem } from './todo-item'
-import { getAllTodosAsyncAC } from '../../BLL/saga'
+import { getAllTodosAsyncAC } from '../../BLL/store/todo/todo.saga'
 
 export const TodoList:FC = ()=>{
   const allTodos = useSelector((state:StateType)=>state)
